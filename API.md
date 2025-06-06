@@ -15,7 +15,7 @@
 ```arduino
 LoRa.begin(frequency);
 ```
- * `frequency` - frequency in Hz (`433E6`, `868E6`, `915E6`)
+* `частота" - частота в Гц (`433E6`, `868E6`, `915E6`)
 
 Возвращает "1` в случае успеха и "0" в случае неудачи.
 
@@ -28,7 +28,7 @@ LoRa.setPins(ss, reset, dio0);
 ```
  * `ss` - выберите новый подчиненный pin-код для использования, по умолчанию используется `10`
  * `reset` - новый используемый pin-код сброса, по умолчанию используется `9`
- * `dio0` - new DIO0 pin to use, defaults to `2`.  **Must** be interrupt capable via [attachInterrupt(...)](https://www.arduino.cc/en/Reference/AttachInterrupt).
+* `dio0` - используется новый вывод DIO0, значение по умолчанию "2".  **Должен быть** с возможностью прерывания через [attachInterrupt(...)](https://www.arduino.cc/en/Reference/AttachInterrupt).
 
 Этот вызов является необязательным и должен использоваться только в том случае, если вам нужно изменить используемые по умолчанию pin-коды.
 
@@ -36,20 +36,20 @@ LoRa.setPins(ss, reset, dio0);
 
 Чтобы сохранить дополнительные контакты, можно было бы соединить контакт сброса микроконтроллера с контактом сброса радиоприемника, таким образом, производя сброс только при запуске.
 
-* `reset` - set to `-1` to omit this pin
+* `сброс` - установите значение "-1", чтобы исключить этот pin-код.
 
 #### Pin dio0 interrupt callbacks
 
-The dio0 pin can be used for channel activity detection callback, transmission finish callback and/or receiving callback, check `onCadDone` , `onTxDone`, and `onReceive`.
+Вывод dio0 можно использовать для обратного вызова обнаружения активности канала, обратного вызова завершения передачи и/или обратного вызова приема, проверки `onCadDone`, `onTxDone` и `onReceive`.
 
 ### Set SPI interface
 
-Override the default SPI interface used by the library. **Must** be called before `LoRa.begin()`.
+Переопределите интерфейс SPI по умолчанию, используемый библиотекой. **Должен быть вызван перед `LoRa.begin()`.
 
 ```arduino
 LoRa.setSPI(spi);
 ```
- * `spi` - new SPI interface to use, defaults to `SPI`
+* `spi` - новый интерфейс SPI для использования, по умолчанию используется "SPI".
 
 Этот вызов является необязательным и должен использоваться только в том случае, если вам нужно изменить используемый по умолчанию SPI-интерфейс, в случае, если на вашей плате Arduino (или совместимой с ней) присутствует более одного SPI-интерфейса.
 
@@ -60,13 +60,13 @@ LoRa.setSPI(spi);
 ```arduino
 LoRa.setSPIFrequency(frequency);
 ```
- * `frequency` - new SPI frequency to use, defaults to `8E6`
+* `частота" - новая используемая частота SPI, по умолчанию - "8E6".
 
 Этот вызов является необязательным и используется только в том случае, если вам нужно изменить частоту SPI, используемую по умолчанию. Некоторые преобразователи логического уровня не могут поддерживать высокие скорости, такие как 8 МГц, поэтому с помощью "LoRa.setSPIFrequency(частота)" можно выбрать более низкую частоту вращения.
 
 ### End
 
-Stop the library
+Остановить работу библиотеки
 
 ```arduino
 LoRa.end()
@@ -84,7 +84,7 @@ LoRa.beginPacket();
 LoRa.beginPacket(implicitHeader);
 ```
 
- * `implicitHeader` - (optional) `true` enables implicit header mode, `false` enables explicit header mode (default)
+* `implicitHeader` - (необязательно) `true` включает режим неявного заголовка, `false` включает режим явного заголовка (по умолчанию).
 
 Возвращает значение "1", если радиостанция готова к передаче, и "0", если она занята или находится в состоянии сбоя.
 
@@ -97,14 +97,14 @@ LoRa.write(byte);
 
 LoRa.write(buffer, length);
 ```
-* `byte` - single byte to write to packet
+* `байт` - один байт для записи в пакет.
 
-or
+или
 
-* `buffer` - data to write to packet
-* `length` - size of data to write
+* `буфер` - данные для записи в пакет
+* "длина" - размер данных для записи
 
-Returns the number of bytes written.
+Возвращает количество записанных байт.
 
 ** Примечание:** Для записи данных в пакет также можно использовать другие API печати Arduino
 
@@ -125,7 +125,7 @@ LoRa.endPacket(async);
 
 **ВНИМАНИЕ**: TxDonecallback использует вывод прерывания в функции проверки `dio0` `setPins`!
 
-### Register callback
+### Зарегистрировать обратный вызов
 
 Зарегистрируйте функцию обратного вызова для завершения пакетной передачи.
 
@@ -219,7 +219,7 @@ long freqErr = LoRa.packetFrequencyError();
 
 Возвращает ошибку частоты принятого пакета в Гц. Ошибка частоты - это смещение частоты между центральной частотой приемника и частотой входящего сигнала LoRa.
 
-### Available
+### Наличие байт в буфере
 
 ```arduino
 int availableBytes = LoRa.available()
@@ -227,7 +227,7 @@ int availableBytes = LoRa.available()
 
 Возвращает количество байт, доступных для чтения.
 
-### Peeking
+### Просмотр наличия байт
 
 Взгляните на следующий байт в пакете.
 
@@ -237,7 +237,7 @@ byte b = LoRa.peek();
 
 Возвращает следующий байт в пакете или `-1`, если доступных байтов нет.
 
-### Reading
+### Чтение
 
 Считайте следующий байт из пакета.
 
@@ -245,16 +245,17 @@ byte b = LoRa.peek();
 byte b = LoRa.read();
 ```
 
-Returns the next byte in the packet or `-1` if no bytes are available.
+Возвращает следующий байт в пакете или `-1`, если доступных байтов нет.
 
-**Note:** Other Arduino [`Stream` API's](https://www.arduino.cc/en/Reference/Stream) can also be used to read data from the packet
+**Примечание:** Другие API Arduino ["Stream" API](https://www.arduino.cc/en/Reference/Stream) также могут быть использованы для чтения данных из пакета
 
-## Channel Activity Detection
-**WARNING**: Channel activity detection callback uses the interrupt pin on the `dio0`, check `setPins` function!
+## Обнаружение активности канала
 
-### Register callback
+**ВНИМАНИЕ**: Обратный вызов для обнаружения активности канала использует вывод прерывания на `dio0`, проверьте функцию `setPins`!
 
-Register a callback function for when channel activity detection has done.
+### Зарегистрировать обратный вызов
+
+Зарегистрируйте функцию обратного вызова для завершения обнаружения активности канала.
 ```arduino
 LoRa.onCadDone(onCadDone);
 
@@ -262,119 +263,119 @@ void onCadDone(boolean signalDetected) {
   // ...
 }
 ```
- * `onCadDone` - function to call when channel activity detection has done.
- * `signalDetected` - if `true`, the radio detects the presence of other LoRa signals.
+ * `onCadDone` - функция, вызываемая при обнаружении активности канала.
+ * `signalDetected` - если значение "true", радиостанция обнаруживает наличие других сигналов LoRa.
 
-### Channel Activity detection mode
-Puts the radio in channel activity detection mode.
+### Режим обнаружения активности канала
+Переводит радиоприемник в режим обнаружения активности канала.
 ```arduino
 LoRa.channelActivityDetection();
 ```
-## Other radio modes
+## Другие режимы радиосвязи
 
-### Idle mode
+### Idle режим
 
-Put the radio in idle (standby) mode.
+Переведите радиоприемник в режим ожидания.
 
 ```arduino
 LoRa.idle();
 ```
 
-### Sleep mode
+### Спящий режим
 
-Put the radio in sleep mode.
+Переведите радио в спящий режим.
 
 ```arduino
 LoRa.sleep();
 ```
 
-## Radio parameters
+## Параметры радиосвязи
 
 ### TX Power
 
-Change the TX power of the radio.
+Измените мощность передачи радиоприемника.
 
 ```arduino
 LoRa.setTxPower(txPower);
 
 LoRa.setTxPower(txPower, outputPin);
 ```
- * `txPower` - TX power in dB, defaults to `17`
- * `outputPin` - (optional) PA output pin, supported values are `PA_OUTPUT_RFO_PIN` and `PA_OUTPUT_PA_BOOST_PIN`, defaults to `PA_OUTPUT_PA_BOOST_PIN`.
+* `txPower" - мощность передачи в дБ, по умолчанию равна `17`
+ * "outputPin" - (необязательно) Выходной вывод PA, поддерживаемые значения - `PA_OUTPUT_RFO_PIN` и `PA_OUTPUT_PA_BOOST_PIN`, по умолчанию - `PA_OUTPUT_PA_BOOST_PIN`.
 
-Supported values are `2` to `20` for `PA_OUTPUT_PA_BOOST_PIN`, and `0` to `14` for `PA_OUTPUT_RFO_PIN`.
+Поддерживаемые значения - от `2` до `20` для `PA_OUTPUT_PA_BOOST_PIN` и от `0` до `14` для `PA_OUTPUT_RFO_PIN`.
 
-Most modules have the PA output pin connected to PA BOOST,
+У большинства модулей выходной вывод PA подключен к усилителю PA,
 
 ### Frequency
 
-Change the frequency of the radio.
+Измените частоту радиоприемника.
 
 ```arduino
 LoRa.setFrequency(frequency);
 ```
- * `frequency` - frequency in Hz (`433E6`, `868E6`, `915E6`)
+* `частота" - частота в Гц (`433E6`, `868E6`, `915E6`)
 
-### Spreading Factor
+### Коэффициент растекания
 
-Change the spreading factor of the radio.
+Измените коэффициент распространения радиосигнала.
 
 ```arduino
 LoRa.setSpreadingFactor(spreadingFactor);
 ```
- * `spreadingFactor` - spreading factor, defaults to `7`
+* `spreadingFactor` - коэффициент распространения, по умолчанию равен "7".
 
-Supported values are between `6` and `12`. If a spreading factor of `6` is set, implicit header mode must be used to transmit and receive packets.
+Поддерживаемые значения находятся в диапазоне от "6" до "12". Если установлен коэффициент расширения, равный "6", для передачи и приема пакетов должен использоваться режим неявного заголовка.
 
-### Signal Bandwidth
+### Полоса пропускания сигнала
 
-Change the signal bandwidth of the radio.
+Измените полосу пропускания сигнала радиостанции.
 
 ```arduino
 LoRa.setSignalBandwidth(signalBandwidth);
 ```
 
- * `signalBandwidth` - signal bandwidth in Hz, defaults to `125E3`.
+* `Ширина полосы сигнала` - полоса пропускания сигнала в Гц, по умолчанию равна `125E3`.
 
-Supported values are `7.8E3`, `10.4E3`, `15.6E3`, `20.8E3`, `31.25E3`, `41.7E3`, `62.5E3`, `125E3`, `250E3`, and `500E3`.
+Поддерживаемыми значениями являются `7.8E3`, `10.4E3`, `15.6E3`, `20.8E3`, `31.25E3`, `41.7E3`, `62.5E3`, `125E3`, `250E3` и `500E3`.
 
-### Coding Rate
+### Скорость кодирования
 
-Change the coding rate of the radio.
+Измените скорость кодирования радиостанции.
 
 ```arduino
 LoRa.setCodingRate4(codingRateDenominator);
 ```
 
- * `codingRateDenominator` - denominator of the coding rate, defaults to `5`
+* `codingRateDenominator` - знаменатель скорости кодирования, по умолчанию равен "5".
 
-Supported values are between `5` and `8`, these correspond to coding rates of `4/5` and `4/8`. The coding rate numerator is fixed at `4`.
+Поддерживаемые значения находятся в диапазоне от "5" до "8", они соответствуют скорости кодирования "4/5" и "4/8". Числитель скорости кодирования фиксирован на `4`.
 
-### Preamble Length
+### Длина преамбулы
 
-Change the preamble length of the radio.
+Измените длину преамбулы радиоприемника.
 
 ```arduino
 LoRa.setPreambleLength(preambleLength);
 ```
 
- * `preambleLength` - preamble length in symbols, defaults to `8`
+* `preambleLength` - длина преамбулы в символах, по умолчанию равна "8".
 
-Supported values are between `6` and `65535`.
+Поддерживаемые значения находятся в диапазоне от "6" до "65535`.
 
-### Sync Word
+### Синхронизирующее слово
 
-Change the sync word of the radio.
+Измените синхронизирующее слово радиоприемника.
 
 ```arduino
 LoRa.setSyncWord(syncWord);
 ```
 
- * `syncWord` - byte value to use as the sync word, defaults to `0x12`
+* `syncWord` - значение в байтах, используемое в качестве слова синхронизации, по умолчанию равно `0x12`.
 
 ### CRC
 
-Enable or disable CRC usage, by default a CRC is not used.
+Включите или отключите использование CRC, по умолчанию CRC не используется.
 
 ```arduino
 LoRa.enableCrc();
@@ -382,35 +383,34 @@ LoRa.enableCrc();
 LoRa.disableCrc();
 ```
 
-### Invert IQ Signals
+### Инвертировать сигналы IQ
 
-Enable or disable Invert the LoRa I and Q signals, by default a invertIQ is not used.
+Включение или выключение инвертирования сигналов Lorax I и Q, по умолчанию функция инвертирования не используется.
 
 ```arduino
 LoRa.enableInvertIQ();
 
 LoRa.disableInvertIQ();
 ```
-### LNA Gain
+### Усиление LNA
 
-Set LNA Gain for better RX sensitivity, by default AGC (Automatic Gain Control) is used and LNA gain is not used.
+Установите усиление LNA для повышения чувствительности приемопередатчика, по умолчанию используется AGC (автоматическая регулировка усиления), а усиление LNA не используется.
 
 ```arduino
 LoRa.setGain(gain);
 ```
 
  * `gain` - LNA gain
+Поддерживаемые значения находятся в диапазоне от "0" до "6". Если коэффициент усиления равен 0, то AGC будет включен, а коэффициент усиления LNA использоваться не будет. В противном случае, если коэффициент усиления от 1 до 6, AGC будет отключен и будет использоваться коэффициент усиления LNA.
 
-Supported values are between `0` and `6`. If gain is 0, AGC will be enabled and LNA gain will not be used. Else if gain is from 1 to 6, AGC will be disabled and LNA gain will be used.
-
-## Other functions
+## Другие функции
 
 ### Random
 
-Generate a random byte, based on the Wideband RSSI measurement.
+Сгенерируйте случайный байт на основе широкополосного измерения RSSI.
 
 ```
 byte b = LoRa.random();
 ```
 
-Returns random byte.
+Возвращает случайный байт.
