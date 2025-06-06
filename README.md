@@ -1,6 +1,11 @@
 # LoraST1278ArduinoESP32
 Lora433E6/868E6/915E6 for ARDUINO ESP32
 
+Контакты:
+i.x.c.o.n@yandex.ru
+https://rutube.ru/channel/29280484/
+https://www.youtube.com/@ALATIR
+
 LoRa.begin(433E6); //433
 
 LoRa.begin(868E6); //868
