@@ -11,6 +11,7 @@ LoRa.begin(433E6); //433
 LoRa.begin(868E6); //868
 
 LoRa.begin(915E6); //915
+![Alt text](https://github.com/DimitriiVM/LoraST1278ArduinoESP32/blob/main/%D0%97%D0%B0%D0%B2%D0%B8%D1%81%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D1%87%D0%B0%D1%81%D1%82%D0%BE%D1%82%20%20%D0%BE%D1%82%20%D1%81%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D0%B8%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8.png?raw=true)
 
 Для  передачи  данных можно использовать  несколько  протоколов,  для передачи  данных от датчиков, и  для передачи  данных с полезной нагрузкой, с  информацией.
 
