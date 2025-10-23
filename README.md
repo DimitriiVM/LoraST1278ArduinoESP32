@@ -40,3 +40,7 @@ DATA - Полезная нагрузка
 DATA - в  пакете  передается  либо в  открытом виде, либо в шифрованном.
 
 ![Alt text](https://github.com/DimitriiVM/LoraST1278ArduinoESP32/blob/main/%D0%A1%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D1%8C%20%20%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B8%20%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C.png?raw=true)
+
+Схема подключения и распиновка для ESP32
+
+<img width="1183" height="1080" alt="Схема подключения ESP32 WROOM DEVKIT V1 к LORA RA-01 RA-02 SX1278 распиновка" src="https://github.com/user-attachments/assets/658895e5-b061-41af-842a-246eda4b1a88" />
